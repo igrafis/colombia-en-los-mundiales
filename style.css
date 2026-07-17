@@ -1,0 +1,550 @@
+:root{
+    --cesped: #013d27;
+    --azul: #0011c8;
+    --beige: #FBF6E9;
+    --amarillo: #FCD116;
+    --rojo: #CE1126;
+    --ink: #10131A;
+    --paper: #F4EFE1;
+    --line: rgba(251,246,233,0.14);
+
+    --maxWidthPrincipal: 980px;
+
+    --fuentePrincipal: 'Inter', sans-serif;
+    --fuenteSecundaria: 'Bebas Neue', sans-serif;/*Definida en el pretitulo*/
+    --fuenteCeldasTarjeta: 'JetBrains Mono', monospace;
+
+    --preTitulo: 14px;
+    --titulo: clamp(42px, 8vw, 88px);
+    --dato: clamp(20px, 4vw, 34px);
+    --pines: 12px;
+    --etiqueta: 10px;
+    --subtitulo: 16px;
+  }
+
+  *{
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    margin:0;
+    background:var(--cesped); /*Define color de fondo*/
+    color:var(--amarillo); /*Define color de fuente*/
+    font-family: var(--fuentePrincipal);
+    -webkit-font-smoothing:antialiased; /*Mejoro el suavizado de fuente en pantalla*/
+    overflow-x:hidden; /*Oculta el scrol en el eje X*/
+  }
+
+  /* Textura de franjas alernadas tipo cancha de fútbol*/
+  body::before{ /*Creo un pseudo-elemento antes del contenido del <body>*/
+    content:""; /*Lo hago visible aunque no tenga texto*/
+    position:fixed; inset:0; /*Lo posiciono fijo (fixed) ocupando todo el <body> | (inset:0 es equivalente a top:0; right:0; bottom:0; left:0)*/
+    background-image: repeating-linear-gradient(180deg, rgba(255,255,255,0.018) 0 160px, rgba(255,255,255,0) 160px 320px); /*Creo las franjas blancas de 160px de alto, inicio con la primera con una transparencia leve y la segunda totalmente transparente. El patrón se repite cubriendo todo el viewport*/
+    pointer-events:none; /*Evito que este pseudo-elemento bloquee clics o interacciones*/
+    z-index:0; /*Lo ubico al fondo del body con indice 0*/
+  }
+
+  /* ---------- TITULO ---------- */
+  header.cabecera{
+    /*position:relative;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 84px 24px 56px 24px; /*Espaciado interno del header*/
+    text-align:center; /*Texto centrado dentro del header*/
+    border-bottom:1px solid var(--line); /*Borde debajo del header*/
+    overflow:hidden;/*Oculto todo lo que se pueda desbordal del header*/
+    background-image:url('image/AdobeStock_756972028.png'); /* Ruta de la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita como mosaico*/
+    background-position: center bottom; /* Centra la imagen exactamente en la pantalla*/
+    background-size: cover; /* Escala la imagen para que cubra todo el espacio sin deformarse*/
+    /*background-attachment: fixed; /* Fija la imagen al hacer scroll para un efecto visual premium */
+    scroll-margin-top: 100vh;
+  }
+
+  /* header.hero::after{
+    content:"";
+    position:absolute; left:50%; bottom:-140px;
+    width:900px; height:900px;
+    transform:translateX(-50%);
+    background: radial-gradient(circle, rgba(252,209,22,0.10) 0%, rgba(252,209,22,0) 65%);
+    pointer-events:none;
+  } */
+   
+  .preTitulo{
+    font-family: var(--fuenteSecundaria);
+    letter-spacing:0.75em; /*Aumento sutilmente el interletrado*/
+    color:var(--amarillo); /*Color de texto amarillo*/
+    font-size:var(--preTitulo);
+    text-transform:uppercase; /*Transformo el texto a mayusculas sostenida*/
+    margin-bottom:9px; /*Defino un margeninferior*/
+  }
+  h1.titulo{
+    font-size: var(--titulo);
+    line-height:0.95; /*Reduzco la altura de caja del texto un 95%* | Aprieta un poco el interlineado*/
+    text-transform:uppercase; /*Transformo el texto a mayusculas sostenida*/
+    margin-bottom:9px;
+  }
+  h1.titulo span{
+    color:var(--azul); /*Color de texto amarillo*/
+    display:block; /*Defino un comportamiento de bloque al <span> dentro del <h1> probocando un salto de línea en el trozo de texto "EN LOS MUNDIALES"*/
+    text-shadow: 
+      -1px -1px 0 var(--beige),  
+      1px -1px 0 var(--beige),
+      -1px  1px 0 var(--beige),  
+      1px  1px 0 var(--beige); /*Genera un borde de 1px en todas las direcciones*/
+  }
+  .subtitulo{
+    max-width:560px; /*Defino un ancho maximo para el subtitulo*/
+    margin:0 auto; /*Lo centro dentro de su contenedor padre, el header*/
+    color:rgba(251,246,233,0.68); /*Color de texto crema con un toque de transparencia*/
+    font-size: var(--subtitulo);
+    line-height:1.6; /*Amplio la altura de caja del texto un 160%* | Aplia el interlineado*/
+    margin-bottom:9px; /*Defino un margeninferior*/
+  }
+  .contenedorNav {
+    position: relative;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.35), rgba(255,255,255,0)); /*Fondo degradado*/
+    max-width: var(--maxWidthPrincipal);
+    width: 100%;
+    padding: 9px;
+    margin-bottom: 9px; /*Defino un margeninferior*/
+  }
+  nav {
+    display: flex;
+    align-content: space-between;
+  }
+  ul{
+    background: linear-gradient(180deg, #00096f, #0011c8); /*Fondo degradado*/
+    border:1px solid rgba(252,209,22,0.25); /*Borde dorado con unatransparencia sutil*/
+    border-radius:10px; /*Borde redondeado*/
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6); /*Sombra para dar la sensación de que flota*/
+    display: flex;
+    flex-direction: row;
+    padding: 9px;
+    margin: 3px auto;
+  }
+
+  li {
+    list-style: none;
+    background: rgba(255, 255, 255, 0.01);
+    padding: 6px 18px; /*Defino un espaciado interno de 4px laterales y 10px arriba y abajo*/
+    border-right: 2px dashed rgba(251,246,233,0.3); /*Borde punteado a la derecha*/
+    align-content:space-around;
+    padding: 6px 18px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  li:last-child{
+    border-right:none; /*Quito el borde punteados a la derecha del último elemento Celda*/
+    }
+
+    li:hover{
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+  nav a{
+    color: var(--amarillo);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  nav a:hover{
+    color: var(--beige);
+  }
+
+  /* ----- TABLA RESULTADOS RESUMEN ----- */
+  .tablaResultados{
+    max-width: var(--maxWidthPrincipal); /*Defino un ancho maximo para la Tabla de Resultados*/
+    margin: -50px auto 0; /*Defino un margen superior negativo para que una parte quede dentro del header, auto para centrar horizontalmente y cero para abajo*/
+    padding: 0 20px; /*Defino un espaciado interno de 20px laterales*/
+    position:relative; /*Hago relativa su posición para configurar la posición de los elementos hijos respecto del padre*/
+    z-index:2; /*La ubico 2 capas arriba quedando por encima del header*/
+  }
+  .tarjeta{
+    background: linear-gradient(180deg, #710915, #CE1126); /*Fondo degradado*/
+    border:1px solid rgba(252,209,22,0.25); /*Borde dorado con unatransparencia sutil*/
+    border-radius:10px; /*Borde redondeado*/
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6); /*Sombra para dar la sensación de que flota*/
+    padding: 22px 18px; /*Defino un espaciado interno de 18px laterales y 22px arriba y abajo*/
+    display:grid; /*Lo convierto en un grid layout*/
+    grid-template-columns: repeat(6, 1fr); /*Divido el ancho en 6 columnas de igual fracción*/
+    gap: 4px; /*Defino un espaciado entre los elementos del grid*/
+  }
+  .celda{
+    text-align:center; /*Centro los elementos internos (texto, iconos...)*/
+    padding: 10px 4px; /*Defino un espaciado interno de 4px laterales y 10px arriba y abajo*/
+    border-right: 2px dashed rgba(251,246,233,0.3); /*Borde punteado a la derecha*/
+  }
+  .celda:last-child{
+    border-right:none; /*Quito el borde punteados a la derecha del último elemento Celda*/
+  }
+  .celda .dato{
+    font-family: var(--fuenteCeldasTarjeta); /*Definimos la tipografía del */
+    font-weight:700; /*Dato en negrita*/
+    font-size: var(--dato); /*Fuente fluida*/
+    color:var(--amarillo); /*Color de fuente*/
+    line-height:1; /*Altura caja de texto ajustada*/
+  }
+  .celda .etiqueta{
+    margin-top:6px; /*Ligera separación del dato y la etiqueta*/
+    font-size:var(--etiqueta); /*Tamaño de fuente fija*/
+    letter-spacing:0.12em; /*Ampliado sutil del interletrado*/
+    text-transform:uppercase; /*Transformo el texto a mayusculas sostenida*/
+    color:rgba(251,246,233,0.55); /*Color de texto crema con un toque de transparencia*/
+  }
+
+  @media (max-width:640px){ /*Comportamiento para pantallas de menos de 640px*/
+    .tarjeta{
+      grid-template-columns: repeat(3, 1fr); /*La tarjeta, que antes tenía 6 columnas, ahora se reorganiza en 3 columnas iguales para que el contenido se vea más cómodo en pantallas pequeñas.*/
+    }
+    .celda:nth-child(3){
+      border-right:none; /*Quito el borde punteados a la derecha del (3) elemento Celda*/
+    }
+    nav{
+          flex-direction: column;
+    }
+  }
+  /* ------------------------------------- */
+  
+  /* --------------- PINES --------------- */
+  .pines{
+    max-width: var(--maxWidthPrincipal); /*Defino un ancho maximo para los pines*/
+    margin: 30px auto 0; /*Considerable separación respecto de la tarjeta y auto para centrar horizontalmente*/
+    padding: 0 24px; /*Espaciado interno en los laterales*/
+    display:flex; /*Lo convierto en un flexbox*/
+    gap:22px; /*Defino un espacio entre los elemenntos*/
+    flex-wrap:wrap; /*Los elementos hijo se acomodaran al ancho de la pantalla*/
+    justify-content:center; /*Los elementos hijo se centrarán en el elemento padre*/
+    font-size:var(--pines); /*Tamaño de fuente fija*/
+    color:rgba(251,246,233,0.6); /*Color de texto crema con un toque de transparencia*/
+  }
+  .pines .punto{
+    width:9px; /*Defino el ancho del punto*/
+    height:9px; /*Defino la altura proporcional del punto*/
+    border-radius:50%; /*Le doy forma redonda*/
+    display:inline-block; /*Hago que el elemento punto (span) se comporte como texto pero manteniendo propiedades de bloque (puede tener ancho, alto, márgenes).*/
+    margin-right:7px; /*Defino un margen a la derecha para separar el punto del texto*/
+  }
+  .punto.rojo{
+    background:var(--rojo); /*Defino color al elemento con las dos clases*/
+  }
+  .punto.azul{
+    background:var(--azul); /*Defino color al elemento con las dos clases*/
+  }
+  .punto.amarillo{
+    background:var(--amarillo); /*Defino color al elemento con las dos clases*/
+  }
+  /* ------------------------------------- */
+
+  /* ---------- LINEA DE TIEMPO ---------- */
+  .contenedorLineaTiempo-wrap{
+    max-width: var(--maxWidthPrincipal); /*Defino un ancho maximo para el contenedor de la linea de tiempo*/
+    margin: 70px auto 0; /*Considerable separación respecto de los pines y auto para centrar horizontalmente*/
+    padding: 0px 20px; /*Espaciado interno en los laterales*/
+    position:relative; /*Hago relativa su posición para que se muestre en el orden del html*/
+  }
+  .ejeTemporal{
+    position:absolute; /*Lo preparo para posicionar fuera del orden del html el ejeTemporal respecto del contenedorLinaTiempo*/
+    left:50%; top:0; bottom:0; /*Defino las coordenadas para el posicionamiento del elemento ejeTemporal al centro (50%)*/
+    width:2px; /*Defino el ancho de la linea ejeTemporal*/
+    transform:translateX(-50%); /*Muevo el elemento ejeTemporal hacia la izquierda (-) una distancia equivalente al 50% de su propio ancho*/
+    background: repeating-linear-gradient(180deg, rgba(251,246,233,0.28) 0 10px, transparent 10px 20px);/*Defino el punteado del ejeTemporal 10px para el paso y 10px para el hueco */
+    z-index:0; /*Lo ubico al fondo del contenedorLineaTiempo con indice 0*/
+  }
+
+  @media (max-width:760px){ /*Comportamiento para pantallas de menos de 760px*/
+    .ejeTemporal{
+      left:30px; /*El ejeTemporal lo ubico a la izquierda*/
+    }
+  }
+  /* ------------------------------------- */
+
+ /* ------- ALTERNANCIA SEGUN COPA ------- */
+  .copa{
+    position:relative; /*Lo posiciono dentro del orden del html*/
+    display:grid; /*Lo convierto en un grid layout*/
+    grid-template-columns: 1fr 60px 1fr; /*Divido el ancho en 3 columnas, 2 de igual fracción y una en el centro de 60px*/
+    align-items: start; /*los elementos hijos de alinearan respecto al primero*/
+    margin-bottom: 46px; /*Dejo un margen inferior considerable*/
+    z-index:1; /*Lo ubico por encima del ejeTemporal con indice 1*/
+    scroll-margin-top: 20vh;
+  }
+  .copa:nth-child(odd) .copa-card{ /*Gestiono el comportamiento de los hijos impares dentro del copa con clase copa-card*/
+    grid-column:1; /*Ocuparan la primera columna del grid layout*/
+    text-align:right; /*Los textos y elementos se alinearan a la derecha*/
+  }
+  .copa:nth-child(even) .copa-card{ /*Gestiono el comportamiento de los hijos pares dentro del copa con clase copa-card*/
+    grid-column:3; /*Ocuparan la tercera columna del grid layout*/
+    text-align:left; /*Los textos y elementos se alinearan a la izquierda*/
+  }
+  .copa-nodo{ /*Gestiono el comportamiento de contenedor con clase copa-nodo*/
+    grid-column:2; /*Ocuparan la segunda columna del grid layout*/
+    display:flex; /*Lo preparo para controlar el comportamiento de sus hijos*/
+    justify-content:center; /*Centro horizontalmente sus hijos*/
+    padding-top:6px; /*Espaciado interno sutil arriba*/
+    margin-top: -12px;
+  }
+  .copa-nodo:hover{
+    /*transform: translateY(-2px);*/
+    transform: scale(1.5);
+  }
+  .nodo-puntoLT{ /*Doy formato al punto sobre la linea de tiempo*/
+    width:16px; /*Defino el ancho del punto*/
+    height:16px; /*Defino el alto del punto*/
+    border-radius:50%; /*Le doy forma redonda*/
+    background:var(--cesped); /*Color de fondo*/
+    border:3px solid var(--amarillo); /*Borde solido*/
+    box-shadow:0 0 0 5px rgba(252,209,22,0.12); /*Defino una sombra*/
+  }
+  .copa.fase-grupo .nodo-puntoLT{ /*Gestiono el comportamiento según gerarquía*/
+    border-color:var(--rojo); /*Rojo para fase de grupos*/
+    box-shadow:0 0 0 5px rgba(214, 89, 104, 0.14);
+  }
+  .copa.octavos-final .nodo-puntoLT{ /*Gestiono el comportamiento según gerarquía*/
+    border-color:var(--azul); /*Azul para octavos de final*/
+    box-shadow:0 0 0 5px rgba(74,127,224,0.14);
+  }
+  .copa.cuartos-final .nodo-puntoLT{ /*Gestiono el comportamiento según gerarquía*/
+    border-color:var(--amarillo); /*Amarillo para cuartos de final*/
+  }
+
+  @media (max-width:760px){ /*Comportamiento para pantallas de menos de 760px*/
+    .copa{
+      grid-template-columns: 44px 1fr; /*Paso 3 a 2 columnas*/
+    }
+    .copa:nth-child(odd) .copa-card, .copa:nth-child(even) .copa-card{
+      grid-column:2;
+      text-align:left; /*Todos las cards ocuparan la fraccion definida una debajo de la otra*/
+    }
+    .copa-nodo{
+      grid-column:1; /*los pines y la linea de tiempo ocuparan la primera columna*/
+      padding-top:6px;
+      margin-right: 23px;
+    }
+  }
+/* ------------------------------------- */
+
+  .copa-card{
+    background: linear-gradient(180deg, rgba(251,246,233,0.06), rgba(251,246,233,0.03));
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:22px 24px;
+    cursor:pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+    position:relative;
+    max-width: 420px;
+  }
+
+  .copa:nth-child(odd) .copa-card{
+    margin-left:auto; /*Las cards pares seran empujadas a la derecha con margin-left auto*/
+  }
+
+  @media (max-width:760px){ /*Comportamiento para pantallas de menos de 760px*/
+    .copa-card{
+    max-width:100%; /*Todas las cards ocopan el 100% del ancho dsponible*/
+    }
+  }
+
+  .copa-card:hover{
+    border-color: rgba(252,209,22,0.4);
+    transform: translateY(-2px);
+  }
+
+  .copa-version{
+    font-family:'Anton', sans-serif;
+    font-size:38px;
+    color:var(--amarillo);
+    line-height:1;
+    margin-bottom:2px;
+  }
+  .copa-anfitrion{
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(251,246,233,0.5);
+    margin-bottom:14px;
+  }
+  .fase-alcanzada{
+    display:inline-block;
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:0.08em;
+    font-size:13px;
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:14px;
+    text-transform:uppercase;
+  }
+  .fase-grupo .fase-alcanzada{
+    background:rgba(206,17,38,0.16);
+    color:#FF8A93;
+    border:1px solid rgba(206,17,38,0.4);
+  }
+  .octavos-final .fase-alcanzada{
+    background:rgba(74,127,224,0.16);
+    color:#8FB4FF;
+    border:1px solid rgba(74,127,224,0.4);
+  }
+  .cuartos-final .fase-alcanzada{
+    background:rgba(252,209,22,0.16);
+    color:var(--amarillo);
+    border:1px solid rgba(252,209,22,0.45);
+  }
+
+  .copa-resumen{
+    font-size:14.5px;
+    line-height:1.55;
+    color:rgba(251,246,233,0.78);
+    margin-bottom:14px;
+  }
+  .copa-a-destacar{
+    font-size:13px;
+    color:var(--beige);
+    background:rgba(251,246,233,0.05);
+    border-left:2px solid var(--amarillo);
+    padding:8px 12px;
+    line-height:1.5;
+  }
+  .copa:nth-child(odd) .copa-a-destacar{
+    border-left:none;
+    border-right:2px solid var(--amarillo);
+  }
+
+  .toggle-hint{
+    margin-top:14px;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(251,246,233,0.4);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .copa:nth-child(odd) .toggle-hint{
+    justify-content:flex-end;
+  }
+  .toggle-hint .flecha{
+    transition: transform 0.25s ease;
+    display:inline-block;
+  }
+  .copa-card.open .toggle-hint .flecha{
+    transform: rotate(180deg);
+  }
+
+  .partidos{
+    max-height:0; /*Se oculta el contenido por defecto*/
+    overflow:hidden;
+    transition: max-height 0.35s ease;
+  }
+  .copa-card.open .partidos{ /*Se muestra el contenido*/
+    /* max-height:400px; Se comenta para usar el segundo script de JS*/
+    margin-top:14px;
+  }
+
+  .fila-partido{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    font-size:13px;
+    padding:7px 0;
+    border-top:1px solid var(--line);
+  }
+  .copa:nth-child(odd) .fila-partido{
+    flex-direction:row-reverse;
+  }
+  .fila-partido .rival{
+    color:rgba(251,246,233,0.85);
+  }
+  .fila-partido .resultado{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .resultado.g{
+    color:#8FE0A8;
+  }
+  .resultado.e{
+    color:#8FB4FF;
+  }
+  .resultado.p{
+    color:#FF8A93;
+  }
+  /* ------------------------------------- */
+
+  /* -------------- FOOTER --------------- */
+  footer{
+    text-align:center;
+    padding: 40px 20px 60px;
+    color:rgba(251,246,233,0.4);
+    font-size:12px;
+    border-top:1px solid var(--line);
+  }
+
+    /* ---------- SOURCES ---------- */
+  .fuentes{
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 50px 24px 10px;
+    border-top:1px solid var(--line);
+  }
+  .fuentes h2{
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    font-size:15px;
+    color:var(--gold);
+    margin:0 0 18px;
+    text-align:center;
+  }
+  .fuentes ol{
+    list-style:none;
+    counter-reset:src;
+    margin:0 auto;
+    padding:0;
+    max-width:720px;
+    display:grid;
+    gap:9px;
+  }
+  .fuentes li{
+    counter-increment:src;
+    font-size:12.5px;
+    line-height:1.55;
+    color:rgba(251,246,233,0.65);
+    padding-left:26px;
+    position:relative;
+  }
+  .fuentes li::before{
+    content: counter(src);
+    position:absolute; left:0; top:0;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:var(--gold);
+    border:1px solid rgba(252,209,22,0.35);
+    width:17px; height:17px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .fuentes li strong{
+    color:rgba(251,246,233,0.88);
+    font-weight:600;
+  }
+  .fuentes a{
+    color:#8FB4FF;
+    text-decoration:none;
+    word-break:break-all;
+  }
+  .fuentes a:hover{
+    text-decoration:underline;
+  }
+  .fuentes .note{
+    max-width:720px;
+    margin: 16px auto 0;
+    font-size:11.5px;
+    color:rgba(251,246,233,0.4);
+    line-height:1.6;
+    font-style:italic;
+  }
