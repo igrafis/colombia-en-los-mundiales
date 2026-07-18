@@ -17,7 +17,7 @@
     --preTitulo: 14px;
     --titulo: clamp(42px, 8vw, 88px);
     --dato: clamp(20px, 4vw, 34px);
-    --pines: 12px;
+    --pines: 13px;
     --etiqueta: 10px;
     --subtitulo: 16px;
   }
@@ -224,20 +224,23 @@
     color:rgba(251,246,233,0.6); /*Color de texto crema con un toque de transparencia*/
   }
   .pines .punto{
-    width:9px; /*Defino el ancho del punto*/
-    height:9px; /*Defino la altura proporcional del punto*/
+    width:12px; /*Defino el ancho del punto*/
+    height:12px; /*Defino la altura proporcional del punto*/
     border-radius:50%; /*Le doy forma redonda*/
     display:inline-block; /*Hago que el elemento punto (span) se comporte como texto pero manteniendo propiedades de bloque (puede tener ancho, alto, márgenes).*/
-    margin-right:7px; /*Defino un margen a la derecha para separar el punto del texto*/
+    margin-right:12px; /*Defino un margen a la derecha para separar el punto del texto*/
   }
   .punto.rojo{
     background:var(--rojo); /*Defino color al elemento con las dos clases*/
+    box-shadow:0 0 0 5px rgba(255, 255, 255, 0.15); /*Defino una sombra*/
   }
   .punto.azul{
     background:var(--azul); /*Defino color al elemento con las dos clases*/
+    box-shadow:0 0 0 5px rgba(255, 255, 255, 0.15); /*Defino una sombra*/
   }
   .punto.amarillo{
     background:var(--amarillo); /*Defino color al elemento con las dos clases*/
+    box-shadow:0 0 0 5px rgba(255, 255, 255, 0.15); /*Defino una sombra*/
   }
   /* ------------------------------------- */
 
@@ -297,20 +300,21 @@
     width:16px; /*Defino el ancho del punto*/
     height:16px; /*Defino el alto del punto*/
     border-radius:50%; /*Le doy forma redonda*/
-    background:var(--cesped); /*Color de fondo*/
-    border:3px solid var(--amarillo); /*Borde solido*/
-    box-shadow:0 0 0 5px rgba(252,209,22,0.12); /*Defino una sombra*/
+    background:rgba(255, 255, 255, 0.05); /*Color de fondo*/
+    border:4px solid var(--amarillo); /*Borde solido*/
+    box-shadow:0 0 0 5px rgba(255, 255, 255, 0.15); /*Defino una sombra*/
   }
   .copa.fase-grupo .nodo-puntoLT{ /*Gestiono el comportamiento según gerarquía*/
     border-color:var(--rojo); /*Rojo para fase de grupos*/
-    box-shadow:0 0 0 5px rgba(214, 89, 104, 0.14);
+    box-shadow:0 0 0 5px rgba(255, 255, 255, 0.15);
   }
   .copa.octavos-final .nodo-puntoLT{ /*Gestiono el comportamiento según gerarquía*/
     border-color:var(--azul); /*Azul para octavos de final*/
-    box-shadow:0 0 0 5px rgba(74,127,224,0.14);
+    box-shadow:0 0 0 5px rgba(255, 255, 255, 0.15);
   }
   .copa.cuartos-final .nodo-puntoLT{ /*Gestiono el comportamiento según gerarquía*/
     border-color:var(--amarillo); /*Amarillo para cuartos de final*/
+    box-shadow:0 0 0 5px rgba(255, 255, 255, 0.15);
   }
 
   @media (max-width:760px){ /*Comportamiento para pantallas de menos de 760px*/
@@ -386,7 +390,7 @@
   }
   .octavos-final .fase-alcanzada{
     background:rgba(74,127,224,0.16);
-    color:#8FB4FF;
+    color:#505ac7;
     border:1px solid rgba(74,127,224,0.4);
   }
   .cuartos-final .fase-alcanzada{
@@ -533,7 +537,7 @@
     font-weight:600;
   }
   .fuentes a{
-    color:#8FB4FF;
+    color:#505ac7;
     text-decoration:none;
     word-break:break-all;
   }
