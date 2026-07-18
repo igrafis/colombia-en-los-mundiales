@@ -114,11 +114,11 @@
     padding: 9px;
     margin-bottom: 9px; /*Defino un margeninferior*/
   }
-  nav {
+  .contenedorNav nav {
     display: flex;
     align-content: space-between;
   }
-  ul{
+  .contenedorNav nav ul{
     background: linear-gradient(180deg, #00096f, #0011c8); /*Fondo degradado*/
     border:1px solid rgba(252,209,22,0.25); /*Borde dorado con unatransparencia sutil*/
     border-radius:10px; /*Borde redondeado*/
@@ -129,7 +129,7 @@
     margin: 3px auto;
   }
 
-  li {
+  .contenedorNav nav ul li {
     list-style: none;
     background: rgba(255, 255, 255, 0.01);
     padding: 6px 18px; /*Defino un espaciado interno de 4px laterales y 10px arriba y abajo*/
@@ -139,21 +139,21 @@
     text-align: center;
     margin: 0 auto;
   }
-  li:last-child{
+  .contenedorNav nav ul li:last-child{
     border-right:none; /*Quito el borde punteados a la derecha del último elemento Celda*/
     }
 
-    li:hover{
+    .contenedorNav nav ul li:hover{
       background: rgba(255, 255, 255, 0.1);
     }
 
-  nav a{
+  .contenedorNav nav a{
     color: var(--amarillo);
     text-decoration: none;
     font-weight: 500;
   }
 
-  nav a:hover{
+  .contenedorNav nav a:hover{
     color: var(--beige);
   }
 
